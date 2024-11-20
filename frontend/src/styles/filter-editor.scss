@@ -1,0 +1,84 @@
+.filter-group {
+    .column {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    & > .filter-group--header {
+        padding: $size-7 $size-6;
+        background-color: $primary;
+        color: white;
+        display: flex;
+        align-items: center;
+
+        & > .field {
+            margin-bottom: 0;
+        }
+        & > span {
+            text-decoration: underline;
+            padding-right: 0.3rem;
+        }
+
+        .button, .select > select {
+            background-color: $primary;
+            border: 2px solid white;
+            color: white;
+
+            &:hover {
+                color: $primary;
+                background-color: white;
+            }
+            & option {
+                color: black;
+                background-color: white;
+            }
+        }
+        .select {
+            margin-right: $size-7;
+            &::after {
+                border-color: white;
+            }
+            &:hover::after {
+                border-color: $primary;
+            }
+        }
+        .button {
+            margin-right: $size-7;
+            &.icon {
+                height: 1.5rem;
+            }
+        }
+        .button.btn-delete {
+            background-color: transparent;
+            color: white;
+            border: 0;
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        & > div > span {
+            text-decoration: underline;
+        }
+    }
+
+    & > .filter-group--children {
+        padding: $size-6;
+
+        & > .filter-condition {
+            margin-left: $size-3;
+        }
+    
+        & > .filter-and-or {
+            color: #999;
+            margin: $size-7 0;
+        }
+
+        .buttons {
+            margin-top: $size-7;
+        }
+    }
+
+    border: 2px solid $primary;
+    border-radius: $radius;
+    margin-bottom: $size-6;
+}

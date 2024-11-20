@@ -1,0 +1,94 @@
+@charset "utf-8";
+
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700');
+
+// Set your brand colors
+$primary: #4db09b;
+$primary-light: #b6e8dd;
+$info: #ef7d36;
+$link: #558eb3;
+$warning: #FFAF40;
+$danger: #E23600;
+$dark: rgb(6, 30, 47);
+$success: #7ca55b;
+
+// Update Bulma's global variables
+$family-sans-serif: "Open Sans", sans-serif;
+$widescreen-enabled: true;
+$fullhd-enabled: false;
+
+$navbar-height: 6rem;
+$navbar-item-hover-background-color: none;
+$navbar-item-img-max-height: 5rem;
+
+// Have wider modals
+$modal-content-width: 900px;
+
+// Transition durations
+$transition-short: 0.2s;
+
+// Import only what you need from Bulma
+@import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/helpers/_all.sass";
+@import "../node_modules/bulma/sass/base/_all.sass";
+@import "../node_modules/bulma/sass/grid/_all.sass";
+@import "../node_modules/bulma/sass/elements/button.sass";
+@import "../node_modules/bulma/sass/elements/container.sass";
+@import "../node_modules/bulma/sass/elements/box.sass";
+@import "../node_modules/bulma/sass/form/_all.sass";
+@import "../node_modules/bulma/sass/elements/icon.sass";
+@import "../node_modules/bulma/sass/elements/title.sass";
+@import "../node_modules/bulma/sass/elements/tag.sass";
+@import "../node_modules/bulma/sass/elements/notification.sass";
+@import "../node_modules/bulma/sass/elements/other.sass";
+@import "../node_modules/bulma/sass/elements/table.sass";
+@import "../node_modules/bulma/sass/elements/content.sass";
+@import "../node_modules/bulma/sass/layout/section.sass";
+@import "../node_modules/bulma/sass/components/breadcrumb.sass";
+@import "../node_modules/bulma/sass/components/level.sass";
+@import "../node_modules/bulma/sass/components/message.sass";
+@import "../node_modules/bulma/sass/components/modal.sass";
+@import "../node_modules/bulma/sass/components/dropdown.sass";
+@import "../node_modules/bulma/sass/components/menu.sass";
+@import "../node_modules/bulma/sass/components/navbar.sass";
+@import "../node_modules/bulma/sass/components/card.sass";
+@import "../node_modules/bulma/sass/components/tabs.sass";
+@import "../node_modules/bulma/sass/components/pagination.sass";
+@import "../node_modules/bulma/sass/layout/hero.sass";
+
+@import "./styles/general-styles.scss";
+@import "./styles/period-selector.scss";
+@import "./styles/filter-editor.scss";
+@import "./styles/input.scss";
+@import "./styles/table.scss";
+@import "./styles/login.scss";
+
+// General SCSS can be placed here
+.card {
+    border: 1px solid #DDD;
+    box-shadow: none;
+
+    .card-header {
+        border-bottom: 0;
+        box-shadow: none;
+    }
+}
+.hero.has-background-white {
+    border-bottom: 1px solid #DDD;
+}
+
+body {
+    overflow-x: auto;
+}
+
+.title, .menu-label {
+    font-family: "Roboto slab", "Open sans", Arial, Helvetica, sans-serif;
+}
+
+@include desktop {
+    .columns > .is-reset-desktop {
+        flex: 1;
+    }
+}

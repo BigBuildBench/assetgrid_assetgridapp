@@ -1,0 +1,136 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build backend",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/backend/backend.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        },
+        {
+            "label": "watch backend",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--project",
+                "${workspaceFolder}/backend/backend.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "test backend",
+            "dependsOn": [],
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "test",
+                "${workspaceFolder}/backend.unittests/backend.unittests.csproj",
+                "/p:CollectCoverage=true",
+                "/p:CoverletOutputFormat=lcov",
+                "/p:CoverletOutput=./lcov.info"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "watch frontend",
+            "command": "${workspaceFolder}/frontend/node_modules/.bin/webpack",
+            "windows": {
+                "command": "${workspaceFolder}/frontend/node_modules/.bin/webpack.cmd"
+            },
+            "args": [
+                "serve"
+            ],
+            "options": {
+                "cwd": "./frontend"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "lint frontend",
+            "command": "${workspaceFolder}/frontend/node_modules/.bin/eslint",
+            "windows": {
+                "command": "${workspaceFolder}/frontend/node_modules/.bin/eslint.cmd"
+            },
+            "args": [
+                "./src/**/*"
+            ],
+            "problemMatcher": [
+                "$eslint-stylish"
+            ],
+            "options": {
+                "cwd": "./frontend"
+            }
+        },
+        {
+            "label": "build frontend",
+            "command": "${workspaceFolder}/frontend/node_modules/.bin/webpack",
+            "windows": {
+                "command": "${workspaceFolder}/frontend/node_modules/.bin/webpack.cmd"
+            },
+            "args": [
+                "--progress",
+            ],
+            "options": {
+                "cwd": "./frontend"
+            },
+            "problemMatcher": "$tsc",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "build frontend (production)",
+            "command": "${workspaceFolder}/frontend/node_modules/.bin/webpack",
+            "windows": {
+                "command": "${workspaceFolder}/frontend/node_modules/.bin/webpack.cmd"
+            },
+            "args": [
+                "--progress",
+                "--config",
+                "./webpack.production.config.js"
+            ],
+            "options": {
+                "cwd": "./frontend"
+            },
+            "problemMatcher": "$tsc",
+            "group": {
+                "kind": "build",
+            }
+        },
+        {
+            "label": "extract i18n strings for frontend",
+            "command": "${workspaceFolder}/frontend/node_modules/.bin/webpack",
+            "windows": {
+                "command": "${workspaceFolder}/frontend/node_modules/.bin/webpack.cmd"
+            },
+            "args": [
+                "--progress",
+            ],
+            "options": {
+                "cwd": "./frontend",
+                "env": {
+                    "babel": "true"
+                }
+            },
+            "problemMatcher": "$tsc",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+    ]
+}

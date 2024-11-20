@@ -1,0 +1,181 @@
+.number-total, table td.number-total {
+    text-align: right;
+    font-weight: bold;
+    color: $dark;
+    &.positive {
+        color: $primary;
+    }
+    &.negative {
+        color: #e74c3c;
+    }
+}
+
+.table {
+    max-width: 100%;
+    overflow-x: scroll;
+}
+
+table tr.editing td {
+    vertical-align: middle;
+}
+
+div.table, table {
+    .button.icon {
+        height: 1.5rem;
+    }
+}
+
+/*
+ * Transaction table
+ */
+div.table {
+    display: grid;
+
+    & > .table-heading, & > .table-body > .table-row {
+        & > div, & > .transaction-lines > div,
+        & > .transaction-lines > .transaction-line > div {
+            border: $table-cell-border;
+            border-width: $table-cell-border-width;
+            padding: $table-cell-padding;
+            vertical-align: top;
+            border: $table-cell-border;
+            border-width: $table-cell-border-width;
+
+            & > .field {
+                flex-grow: 1;
+            }
+        }
+    }
+    
+    & > .table-heading {
+        display: contents;
+        font-weight: bold;
+        color: $table-head-cell-color;
+        & > div {
+            border-width: $table-head-cell-border-width
+        }
+        & > .column-header.sortable {
+            cursor: pointer;
+            .icon {
+                color: $info;
+            }
+        }
+
+        .btn-multiselect {
+            margin-left: -0.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: normal;
+            .button {
+                padding: 0.5rem;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    & > .table-body {
+        display: contents;
+        & > .table-row {
+            display: contents;
+        }
+    }
+
+    &.is-hoverable > .table-body > .table-row:hover > div,
+    &.is-hoverable > .table-body > .table-row:hover > .transaction-lines > .transaction-line > div {
+        background-color: $table-row-hover-background-color;
+    }
+}
+
+div.table.transaction-table {
+    grid-template-columns: [colstart] auto auto [innerstart] auto auto auto auto [innerend] auto [colend];
+    &.no-actions {
+        grid-template-columns: [colstart] max-content auto [innerstart] auto auto auto auto auto [innerend] [colend];
+        .transaction-line > div:last-child {
+            display: none;
+        }
+    }
+    &.multi-select {
+        grid-template-columns: [colstart] max-content max-content [innerstart] auto max-content auto auto auto [innerend] max-content [colend];
+    }
+    &.is-small {
+        font-size: $size-7;
+    }
+
+    .table-row > div {
+        display: flex;
+        align-items: center;
+
+        input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+
+        &.transaction-lines {
+            &.split {
+                display: contents;
+                & > .transaction-line {
+                    display: contents;
+                    font-size: $size-7;
+
+                    & > .total {
+                        text-align: right;
+                    }
+                    & > :first-child, & > :last-child {
+                        position: relative;
+                        border-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        &.number-total {
+            justify-content: right;
+        }
+    }
+
+    .table-row.editing > div {
+        background-color: $table-row-hover-background-color;
+        &.transaction-lines div {
+            background-color: white;
+            &.transaction-line > div {
+                background-color: $table-row-hover-background-color;
+                &:first-child {
+                    border-right-width: 1px;
+                    display: flex;
+                    justify-content: right;
+                    align-items: center;
+                    padding-right: 0;
+                    background: transparent;
+
+                    .grip {
+                        padding: 0;
+                        color: #999;
+                        cursor: move;
+                    }
+                }
+                &:last-child {
+                    display: flex;
+                    justify-content: left;
+                    align-items: center;
+                    border-left-width: 1px;
+                    background: transparent;
+                }
+            }
+        }
+
+        &.transaction-lines {
+            &.non-split {
+                grid-column-start: colstart;
+                grid-column-end: colend;
+                display: flex;
+                justify-content: center;
+            }
+            &.split {
+                & > .btn-add-line {
+                    grid-column: innerstart / innerend;
+                    display: flex;
+                    justify-content: center;
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+}

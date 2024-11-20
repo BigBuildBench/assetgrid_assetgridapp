@@ -1,0 +1,179 @@
+/*
+ * Dropdown
+ */
+.dropdown {
+    display: inline-flex;
+  
+    &.is-fullwidth {
+        display: flex;
+        .dropdown-trigger,
+        .dropdown-menu {
+            min-width: 100%;
+            max-width: calc(max(100%, 300px));
+        }
+    }
+
+    .dropdown-trigger {
+        display: flex;
+    }
+    .dropdown-content {
+        & > .dropdown-item {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        & > .rdrCalendarWrapper {
+            display: block;
+        }
+    }
+
+    .dropdown-trigger .button, .dropdown-trigger .input {
+        text-align: left;
+        justify-content: space-between;
+
+        &:first-child {
+            flex-grow: 1;
+        }
+        &:not(:last-child) {
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+        }
+        &:not(:first-child) {
+            border-bottom-left-radius: 0;
+            border-top-left-radius: 0;
+            border-left: 0;
+        }
+    }
+    &.is-danger {
+        .dropdown-trigger > .button, .dropdown-trigger > .input {
+            border-color: $danger;
+        }
+    }
+}
+
+/*
+ * Multiple input
+ */
+.input-multiple {
+    @extend %input;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    height: auto;
+    min-height: 2.5rem;
+
+    & > .tag, & > input {
+        margin: 0.25rem;
+    }
+
+    & > input {
+        flex-grow: 1;
+        border: 0;
+        outline: none;
+        width: 0px;
+        &:focus {
+            outline: none;
+            width: 3rem;
+        }
+        &::placeholder {
+            color: $input-placeholder-color
+        }
+
+        /* Remove up/down arrows for input[number] for Blink/Webkit */
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            appearance: none;
+            margin: 0;
+        }
+
+        /* Remove up/down arrows for input[number] for Firefox */
+        &[type=number] {
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+    }
+
+    & > .button-add {
+        position: relative;
+        height: 20px;
+        max-height: 20px;
+        max-width: 20px;
+        min-height: 20px;
+        min-width: 20px;
+        width: 20px;
+        border: 0;
+        background: transparent;
+        margin-right: 0.5rem;
+        cursor: pointer;
+        color: #DDD;
+
+        & > * {
+            background-color: hsl(0deg, 0%, 100%);
+            display: block;
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%) scale(1.5);
+            transform-origin: center center;
+        }
+        &:hover {
+            color: #999;
+        }
+    }
+}
+
+/*
+ * Buttons
+ */
+.icon.button {
+    border: 0;
+    background-color: transparent;
+    color: $dark;
+    &:hover {
+        color: $link;
+    }
+}
+.button.icon {
+    height: 2.5rem;
+}
+
+/*
+ * DateTime
+ */
+.input-datetime {
+    .input-time {
+        padding: 0 0.5rem;
+        display: flex;
+    }
+    .separator {
+        padding: 0.25rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+    }
+}
+
+/*
+ * Display for multi-line text
+ */
+pre.multiline-text {
+    border: 1px solid hsl(0deg, 0%, 86%);
+    border-radius: 3px;
+    padding: 0.8rem;
+    font-family: inherit;
+}
+
+/*
+ * File input
+ */
+.file.has-addons {
+    & > label > :last-child > .button {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-left: 0;
+    }
+    & > label > :not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+}
